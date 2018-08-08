@@ -1,0 +1,47 @@
+﻿@model MyApp.Models.FooViewModel
+
+<h2>Index</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Waldo" class="control-label"></label>
+                <input asp-for="Waldo" class="form-control" />
+                <span asp-validation-for="Waldo" class="text-danger"></span>
+                
+                <br/>
+                <label asp-for="SubModel.Blah" class="control-label"></label>
+                <input asp-for="SubModel.Blah" class="form-control" name="Blah"/>
+                @Html.ValidationMessage("Blah", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+        
+        <form asp-action="Index2">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Waldo" class="control-label"></label>
+                <input asp-for="Waldo" class="form-control" />
+                <span asp-validation-for="Waldo" class="text-danger"></span>
+                
+                <br/>
+                <label asp-for="Sub2Model.Blah2" class="control-label"></label>
+                <input asp-for="Sub2Model.Blah2" class="form-control" name="Blah2"/>
+                @Html.ValidationMessage("Blah2", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
